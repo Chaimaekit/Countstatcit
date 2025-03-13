@@ -77,7 +77,7 @@ async def search_by_name():
 @app.get("/search_state/{query}")
 async def search_by_state(query: str):
     documents = collection.find_one({"states.name": query})
-    if documents is not None:
+    if documents is None:
         return {"No such state founded"}
     documents["_id"] = str(documents["_id"])
     return JSONResponse(content=documents)
@@ -86,7 +86,7 @@ async def search_by_state(query: str):
 @app.get("/search_city/{query}")
 async def search_by_city(query: str):
     documents = collection.find_one({"states.cities.name": query})
-    if documents is not None:
+    if documents is None:
         return {"No such city founded"}
     documents["_id"] = str(documents["_id"])
     return JSONResponse(content=documents)
