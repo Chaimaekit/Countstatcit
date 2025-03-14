@@ -8,7 +8,7 @@ import requests
 
 app = FastAPI()
 
-client = MongoClient("mongodb://localhost:27017/")
+client = MongoClient("mongodb://localhost:27017/")#changes
 db = client["COUNTRIES"]
 collection = db["countries"]
 
@@ -102,4 +102,4 @@ async def search_by_city(query: str):
 insert_url_countries(url)
 
 if __name__== "__main__":
-    uvicorn.run(app, host="localhost",port=8080)
+    uvicorn.run(app, host="0.0.0.0",port=8080)
